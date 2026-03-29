@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\KARTHIK\AppData\Local\Programs\Python\Python39\lib\site-packages\fastapi\applications.py", line 1064, in openapi
+    self.openapi_schema = get_openapi(
+  File "C:\Users\KARTHIK\AppData\Local\Programs\Python\Python39\lib\site-packages\fastapi\openapi\utils.py", line 518, in get_openapi
+    field_mapping, definitions = get_definitions(
+  File "C:\Users\KARTHIK\AppData\Local\Programs\Python\Python39\lib\site-packages\fastapi\_compat\v2.py", line 236, in get_definitions
+    schema_generator = GenerateJsonSchema(ref_template=REF_TEMPLATE)
+  File "C:\Users\KARTHIK\AppData\Local\Programs\Python\Python39\lib\site-packages\pydantic\json_schema.py", line 294, in __init__
+    self._schema_type_to_method = self.build_schema_type_to_method()
+  File "C:\Users\KARTHIK\AppData\Local\Programs\Python\Python39\lib\site-packages\pydantic\json_schema.py", line 333, in build_schema_type_to_method
+    method_name = f'{key.replace("-", "_")}_schema'
+  File "C:\Users\KARTHIK\AppData\Local\Programs\Python\Python39\lib\typing.py", line 647, in __getattr__
+    return getattr(self.__origin__, attr)
+AttributeError: '_SpecialForm' object has no attribute 'replace'
