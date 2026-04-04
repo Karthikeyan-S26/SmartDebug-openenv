@@ -1,0 +1,6 @@
+name: SmartDebug
+description: Recursive Debugger Environment
+tasks:
+  - easy
+  - medium
+  - hard
