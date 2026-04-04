@@ -1,5 +1,5 @@
-name: SmartDebug
-description: Recursive Debugger Environment
+name: smartdebug-env
+description: Debugging environment for agentic code fixing
 tasks:
   - easy
   - medium
