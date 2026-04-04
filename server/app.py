@@ -33,3 +33,11 @@ def step_env(action: Action):
 @app.get("/state")
 def get_state():
     return {"state": env.state()}
+
+def main():
+    import uvicorn
+    uvicorn.run("server.app:app", host="0.0.0.0", port=7860)
+
+
+if __name__ == "__main__":
+    main()
