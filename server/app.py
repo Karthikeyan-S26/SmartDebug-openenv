@@ -11,8 +11,16 @@ from models import Action
 app = FastAPI()
 env = DebugEnv()
 
+from typing import Optional
+from pydantic import BaseModel
+
+class ResetRequest(BaseModel):
+    task_name: Optional[str] = "easy"
+
 @app.post("/reset")
-def reset(task_name: str = Query("easy")):
+def reset(request: Optional[ResetRequest] = None, task_name: str = Query("easy")):
+    if request and request.task_name:
+        task_name = request.task_name
     obs = env.reset(task_name)
     return {"observation": obs}
 
