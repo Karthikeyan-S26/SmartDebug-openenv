@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.11-slim
 
 # Create a user with UID 1000 for Hugging Face compatibility
 RUN useradd -m -u 1000 user
