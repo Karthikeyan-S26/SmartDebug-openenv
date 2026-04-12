@@ -27,9 +27,8 @@ for task in tasks:
                 messages=[{"role": "user", "content": f"Hi, executing task: {task}"}],
                 max_tokens=10
             )
-            print(f"LLM Response: {response.choices[0].message.content}")
-        except Exception as e:
-            print(f"LLM Call failed: {e}")
+        except Exception:
+            pass
 
         requests.post(f"{BASE_URL}/reset", params={"task_name": task})
 
