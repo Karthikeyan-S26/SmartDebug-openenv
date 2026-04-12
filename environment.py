@@ -35,16 +35,13 @@ class DebugEnv:
         if action.action_type == "edit_line":
             if action.line_number is not None and 1 <= action.line_number <= len(self.code_lines):
                 self.code_lines[action.line_number - 1] = action.new_code
-            else:
-                reward -= 0.05  # invalid edit
                 
         elif action.action_type == "run_tests":
             tests_passed, tests_total, score, error = self._run_tests()
             
-            reward += score
+            reward = score
             
-            if score >= 1.0 and tests_total > 0:
-                reward += 1.0  # Bonus for completing safely
+            if tests_passed == tests_total and tests_total > 0:
                 done = True
                 
             obs = self._get_obs()
