@@ -39,7 +39,13 @@ class DebugEnv:
         elif action.action_type == "run_tests":
             tests_passed, tests_total, score, error = self._run_tests()
             
-            reward = score
+            # ensure reward stays in (0,1)
+            if score <= 0:
+                reward = 0.1
+            elif score >= 1:
+                reward = 0.9
+            else:
+                reward = score
             
             if tests_passed == tests_total and tests_total > 0:
                 done = True

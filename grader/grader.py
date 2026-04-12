@@ -28,7 +28,15 @@ class Grader:
         except Exception as e:
             error = traceback.format_exc()
             
-        ratio = float(passed / total)
-        # Ensure score between 0.0 -> 1.0 strictly (so hackathon validator sees partial score)
-        score = 0.01 + 0.98 * ratio
+        if total == 0:
+            score = 0.5
+        else:
+            score = passed / total
+
+        # force into (0,1) range
+        if score <= 0:
+            score = 0.1
+        elif score >= 1:
+            score = 0.9
+
         return passed, total, score, error
