@@ -35,7 +35,7 @@ class Grader:
 
         # force into (0,1) range
         if score <= 0:
-            score = 0.1
+            score = 0.2
         elif score >= 1:
             score = 0.9
 

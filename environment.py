@@ -41,7 +41,7 @@ class DebugEnv:
             
             # ensure reward stays in (0,1)
             if score <= 0:
-                reward = 0.1
+                reward = 0.2
             elif score >= 1:
                 reward = 0.9
             else:
