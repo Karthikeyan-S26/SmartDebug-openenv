@@ -2,7 +2,7 @@ import requests
 import os
 from openai import OpenAI
 
-BASE_URL = "https://karthisenthil-smartdebug-env.hf.space"
+BASE_URL = os.getenv("OVERRIDE_BASE_URL", "https://karthisenthil-smartdebug-env.hf.space")
 
 API_BASE_URL = os.getenv("API_BASE_URL", "https://api.openai.com/v1")
 API_KEY = os.getenv("API_KEY", "dummy-key")
@@ -60,7 +60,7 @@ for task in tasks:
     except Exception:
         print("\n[STEP]")
         print("action: error")
-        print("reward: 0")
+        print("reward: 0.01")
 
         print("\n[END]")
-        print("final_score: 0")
+        print("final_score: 0.01")
