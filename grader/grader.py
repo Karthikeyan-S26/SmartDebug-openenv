@@ -29,6 +29,6 @@ class Grader:
             error = traceback.format_exc()
             
         score = float(passed / total)
-        # Ensure score between 0.0 -> 1.0 strictly
-        score = max(0.0, min(1.0, score))
+        # Ensure score falls strictly between 0 and 1
+        score = max(0.01, min(0.99, score))
         return passed, total, score, error
