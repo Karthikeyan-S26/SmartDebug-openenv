@@ -1,6 +1,18 @@
 name: smartdebug-env
 description: Debugging environment for agentic code fixing
 tasks:
-  - easy
-  - medium
-  - hard
+  - id: easy
+    name: Easy Debugging Task
+    description: Fix a basic mathematical logic error
+    difficulty: easy
+    grader: grader.grader:Grader.compute_score
+  - id: medium
+    name: Medium Debugging Task
+    description: Fix a loop implementation logic error
+    difficulty: medium
+    grader: grader.grader:Grader.compute_score
+  - id: hard
+    name: Hard Debugging Task
+    description: Fix recursive logic in Fibonacci function
+    difficulty: hard
+    grader: grader.grader:Grader.compute_score
