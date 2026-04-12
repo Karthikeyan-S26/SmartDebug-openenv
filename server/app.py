@@ -1,21 +1,23 @@
 import os
 import sys
 
-# Ensure root directory is in path just in case
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+sys.path.insert(0, os.path.dirname(__file__))
 
 from fastapi import FastAPI, Query
-from environment import DebugEnv
+from typing import Optional
+from pydantic import BaseModel
+
+from server.environment import DebugEnv
 from models import Action
 
 app = FastAPI()
 env = DebugEnv()
 
-from typing import Optional
-from pydantic import BaseModel
 
 class ResetRequest(BaseModel):
     task_name: Optional[str] = "easy"
+
 
 @app.post("/reset")
 def reset(request: Optional[ResetRequest] = None, task_name: str = Query("easy")):
@@ -24,23 +26,28 @@ def reset(request: Optional[ResetRequest] = None, task_name: str = Query("easy")
     obs = env.reset(task_name)
     return {"observation": obs}
 
+
 @app.get("/reset")
 def reset_get(task_name: str = "easy"):
     obs = env.reset(task_name)
     return {"observation": obs}
 
+
 @app.post("/step")
 def step_env(action: Action):
-    obs, reward, done = env.step(action)
+    result = env.step(action)
+    obs, reward, done = result
     return {
         "observation": obs,
         "reward": reward,
         "done": done
     }
 
+
 @app.get("/state")
 def get_state():
     return {"state": env.state()}
+
 
 def main():
     import uvicorn
